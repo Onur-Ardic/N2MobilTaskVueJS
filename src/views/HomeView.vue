@@ -2,6 +2,7 @@
 import { getUserStore } from '@/stores/users.js'
 import { storeToRefs } from 'pinia'
 import UserCard from '@/components/Pages/Home/UserCard.vue'
+import { onMounted } from 'vue'
 
 export default {
   components: {
@@ -11,7 +12,9 @@ export default {
     const getUser = getUserStore()
     const { users } = storeToRefs(getUser)
 
-    getUser.fetchUsers()
+    onMounted(() => {
+      getUser.fetchUsers()
+    })
 
     return { users }
   },

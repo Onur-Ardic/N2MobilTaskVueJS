@@ -1,63 +1,69 @@
 <script>
 import Logo from '../Pages/logo.vue'
+import { computed, onMounted } from 'vue'
+import { getUserStore } from '@/stores/users.js'
+import { useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+
 export default {
   name: 'Sidebar',
   components: {
     Logo,
+  },
+  props: {
+    activeSection: String,
+  },
+  emits: ['update:section'],
+  setup(props, { emit }) {
+    const getUser = getUserStore()
+    const { users } = storeToRefs(getUser)
+    const route = useRoute()
+    const userId = computed(() => Number(route.params.id))
+    const user = computed(() => users.value.find((u) => u.id === userId.value))
+    const isUserDetailPage = computed(() => route.name === 'user-details')
+
+    onMounted(() => {
+      if (users.value.length === 0) {
+        getUser.fetchUsers()
+      }
+    })
+
+    const setSection = (section) => {
+      emit('update:section', section)
+    }
+
+    return { user, isUserDetailPage, setSection }
   },
 }
 </script>
 
 <template>
   <div class="sidebar bg-[#f5f5f5] w-[14%] h-screen p-5 border-r-2 border-[#D8D9DD] relative">
+    <div v-if="isUserDetailPage && user" class="user-info mb-4">
+      <h3 class="text-lg font-semibold">{{ user.name }}</h3>
+      <p class="text-sm">{{ user.email }}</p>
+      <p class="text-sm">{{ user.phone }}</p>
+    </div>
     <ul>
-      <li class="flex gap-3 group">
-        <div class="icon mt-1">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 19V17C1 15.9391 1.42143 14.9217 2.17157 14.1716C2.92172 13.4214 3.93913 13 5 13H9C10.0609 13 11.0783 13.4214 11.8284 14.1716C12.5786 14.9217 13 15.9391 13 17V19M14 1.13C14.8604 1.3503 15.623 1.8507 16.1676 2.55231C16.7122 3.25392 17.0078 4.11683 17.0078 5.005C17.0078 5.89317 16.7122 6.75608 16.1676 7.45769C15.623 8.1593 14.8604 8.6597 14 8.88M19 19V17C18.9949 16.1172 18.6979 15.2608 18.1553 14.5644C17.6126 13.868 16.8548 13.3707 16 13.15M3 5C3 6.06087 3.42143 7.07828 4.17157 7.82843C4.92172 8.57857 5.93913 9 7 9C8.06087 9 9.07828 8.57857 9.82843 7.82843C10.5786 7.07828 11 6.06087 11 5C11 3.93913 10.5786 2.92172 9.82843 2.17157C9.07828 1.42143 8.06087 1 7 1C5.93913 1 4.92172 1.42143 4.17157 2.17157C3.42143 2.92172 3 3.93913 3 5Z"
-              stroke="#4F359B"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
-
-        <RouterLink
-          to="/"
-          class="text-xl text-[#4F359B] font-normal before:bg-[#4F359B] before:rounded-full group-active:before:block"
-          active-class="before:block"
+      <li v-if="!isUserDetailPage" class="flex gap-3 group">
+        <RouterLink to="/" class="text-xl text-[#4F359B]">Users</RouterLink>
+      </li>
+      <li v-if="isUserDetailPage" class="flex gap-3 group">
+        <RouterLink :to="`/userdetail/${user.id}?section=todos`" class="text-xl text-[#4F359B]"
+          >Todos</RouterLink
         >
-          Users
-        </RouterLink>
+      </li>
+      <li v-if="isUserDetailPage" class="flex gap-3 group">
+        <RouterLink :to="`/userdetail/${user.id}?section=posts`" class="text-xl text-[#4F359B]"
+          >Posts</RouterLink
+        >
+      </li>
+      <li v-if="isUserDetailPage" class="flex gap-3 group">
+        <RouterLink :to="`/userdetail/${user.id}?section=albums`" class="text-xl text-[#4F359B]"
+          >Albums</RouterLink
+        >
       </li>
     </ul>
-
     <Logo />
   </div>
 </template>
-
-<style>
-.active-link {
-  position: relative;
-}
-
-.active-link::before {
-  content: '';
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  background-color: #4f359b;
-  border-radius: 50%;
-}
-</style>
