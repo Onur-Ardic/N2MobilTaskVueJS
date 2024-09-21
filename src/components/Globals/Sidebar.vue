@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <div class="sidebar bg-[#f5f5f5] w-[260px] h-screen p-5 border-r-2 border-[#D8D9DD] relative">
+  <div class="sidebar bg-[#f5f5f5] w-[14%] h-screen p-5 border-r-2 border-[#D8D9DD] relative">
     <ul>
       <li class="flex gap-3 group">
         <div class="icon mt-1">
@@ -31,7 +31,7 @@ export default {
         </div>
 
         <RouterLink
-          to="/users"
+          to="/"
           class="text-xl text-[#4F359B] font-normal before:bg-[#4F359B] before:rounded-full group-active:before:block"
           active-class="before:block"
         >
@@ -52,12 +52,12 @@ export default {
 .active-link::before {
   content: '';
   position: absolute;
-  left: -10px; /* Sola kaydırma */
+  left: -10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 10px; /* Şekil genişliği */
-  height: 10px; /* Şekil yüksekliği */
-  background-color: #4f359b; /* Mor renk */
-  border-radius: 50%; /* Yuvarlak şekil */
+  width: 10px;
+  height: 10px;
+  background-color: #4f359b;
+  border-radius: 50%;
 }
 </style>

@@ -1,34 +1,30 @@
 <script>
+import { getUserStore } from '@/stores/users.js'
+import { storeToRefs } from 'pinia'
+
 export default {
-  data() {
-    return {
-      users: [],
-    }
-  },
-  mounted() {
-    this.fetchUserData()
-  },
-  methods: {
-    async fetchUserData() {
-      try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        this.users = await response.json()
-      } catch (error) {
-        console.error('Fetch error:', error)
-      }
-    },
+  setup() {
+    const getUser = getUserStore()
+    const { users } = storeToRefs(getUser)
+
+    getUser.fetchUsers()
+
+    return { users }
   },
 }
 </script>
 
 <template>
   <section class="user">
-    <div class="user-wrapper">
+    <h2 class="my-3 font-bold text-lg">All Users</h2>
+    <div
+      class="user-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      v-if="users.length"
+    >
       <div
-        class="user-card border w-[300px] p-5 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 bg-white"
+        v-for="user in users"
+        :key="user.id"
+        class="user-card border w-[460px] p-5 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 hover:cursor-pointer bg-white"
       >
         <div class="card-header flex items-center gap-5">
           <div class="user-profile-image">
@@ -40,9 +36,9 @@ export default {
           </div>
 
           <div class="user-contact-info">
-            <h3 class="user-fullname text-xl font-semibold">Jane Doe</h3>
-            <h3 class="user-email text-gray-600">jane@lorem.com</h3>
-            <h3 class="user-phone-number text-gray-600">+90 555 678 12 23</h3>
+            <h3 class="user-fullname text-xl font-semibold">{{ user.name }}</h3>
+            <p class="user-email text-sm text-gray-600">{{ user.email }}</p>
+            <p class="user-phone-number text-gray-600">{{ user.phone }}</p>
           </div>
         </div>
 
@@ -82,7 +78,13 @@ export default {
 
                 <h5 class="font-bold">Location</h5>
               </div>
-              <p class="text-gray-600"><span>Timko sokak no:2</span> Yeni Mahalle / Ankara</p>
+              <p class="text-gray-600">
+                <span
+                  >Timko sokak no:2
+                  <br />
+                </span>
+                Yeni Mahalle / Ankara
+              </p>
             </div>
 
             <div class="company flex flex-col">
@@ -105,7 +107,13 @@ export default {
 
                 <h5 class="font-bold">Company</h5>
               </div>
-              <p class="text-gray-600"><span>Timko sokak no:2</span>Yeni Mahalle / Ankara</p>
+              <p class="text-gray-600 text-md">
+                <span
+                  >Timko sokak no:2
+                  <br />
+                </span>
+                Yeni Mahalle / Ankara
+              </p>
             </div>
 
             <div class="website flex flex-col">
@@ -136,7 +144,7 @@ export default {
                 <h5 class="font-bold">Website</h5>
               </div>
 
-              <p class="text-gray-600">jonedoe.com</p>
+              <p class="text-gray-600">{{ user.website }}</p>
             </div>
           </div>
         </div>

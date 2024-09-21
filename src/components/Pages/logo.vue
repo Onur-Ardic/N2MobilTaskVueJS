@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="sidebar-logo absolute bottom-2 w-full">
-    <div class="line w-[90%] h-[1px] mb-3 bg-[#485b69] rounded-sm"></div>
+    <div class="line w-[90%] h-[2px] mb-3 bg-[#D8D9DD] rounded-sm"></div>
     <div class="svg-container flex justify-center items-center">
       <svg
         width="40"

@@ -1,29 +1,46 @@
-# .
+# N2MOBİL Frontend Vue Task
 
-This template should help get you started developing with Vue 3 in Vite.
+## Proje Tanımı
 
-## Recommended IDE Setup
+Bu proje, kullanıcı detay izleme platformu olarak tasarlanmıştır. Kullanıcıların listelendiği sayfada, her bir kullanıcıya ait genel bilgilerin bulunduğu kartlar mevcuttur. Kullanıcı kartına tıklayarak, kullanıcının detaylarını görebileceğimiz bir sayfaya yönlendirilmesi beklenmektedir. Detay sayfasında, kullanıcının paylaşımlarını, albümlerini ve görevlerini takip edebilmeliyiz.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Teknolojiler
 
-## Customize configuration
+- **Vue.js**: Projenin temel frontend kütüphanesi.
+- **Pinia**: Durum yönetimi için kullanılmıştır.
+- **Tailwind CSS**: Stil ve tasarım için kullanılmıştır.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Kurulum
 
-## Project Setup
+1. Projeyi klonlayın:
 
-```sh
-bun install
-```
+   ```bash
+   git clone <repo-url>
+   ```
 
-### Compile and Hot-Reload for Development
+2. Proje dizinine gidin:
 
-```sh
-bun dev
-```
+   ```bash
+   cd <project-directory>
+   ```
 
-### Compile and Minify for Production
+3. Gerekli bağımlılıkları yükleyin:
 
-```sh
-bun build
-```
+   ```bash
+   npm install
+   ```
+
+4. Geliştirme sunucusunu başlatın:
+   ```bash
+   npm run serve
+   ```
+
+## Kullanım
+
+- Ana sayfada kullanıcıların listesi görüntülenir.
+- Her bir kullanıcı kartına tıklayarak detay sayfasına geçiş yapılır.
+- Detay sayfasında kullanıcının paylaşımları, albümleri ve görevleri görüntülenir.
+
+## Tasarım Linki
+
+Projenin tasarımına [buradan ulaşabilirsiniz](https://www.figma.com/file/NU9uWeJyUgnrdttHWXaTTW/Vue-Task?node-id=1%3A5994&t=8l9h18KXuF0cjgPl-1).
