@@ -42,17 +42,20 @@ export default {
 </script>
 
 <template>
-  <div class="sidebar bg-[#f5f5f5] w-[14%] h-screen p-5 border-r-2 border-[#D8D9DD] relative">
-    <div v-if="isUserDetailPage && user" class="user-info mb-4 flex gap-3 items-center">
+  <div class="sidebar bg-[#f5f5f5] w-[14%] h-screen border-r-2 border-[#D8D9DD] relative">
+    <div
+      v-if="isUserDetailPage && user"
+      class="user-info mb-4 flex gap-3 items-center bg-white p-3"
+    >
       <div class="user-img">
         <img src="/userimage.jpg" alt="avatar" class="w-10 h-10 rounded-full object-cover" />
       </div>
       <div class="user-info">
         <h3 class="text-lg font-semibold">{{ user.name }}</h3>
-        <p class="text-sm text-slate-500">{{ user.email }}</p>
+        <p class="text-sm text-slate-500 underline">{{ user.email }}</p>
       </div>
     </div>
-    <ul class="mt-12">
+    <ul class="mt-12 p-5">
       <li v-if="!isUserDetailPage" class="flex gap-3 group items-center mt-3 active">
         <svg
           width="24"
