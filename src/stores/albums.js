@@ -10,7 +10,7 @@ export const getAlbumsStore = defineStore('album', {
     async fetchAlbums() {
       this.loading = true
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/albums')
+        const response = await fetch('https://jsonplaceholder.typicode.com/images')
         this.albums = await response.json()
       } catch (error) {
         console.error('API hata verdi:', error)
