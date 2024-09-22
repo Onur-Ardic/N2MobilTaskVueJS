@@ -1,6 +1,5 @@
 <template>
   <div class="relative">
-    <h3 class="text-xl font-bold">Posts</h3>
     <div v-if="isLoading">Loading...</div>
     <ul class="relative" v-else>
       <li v-if="localPosts.length === 0" class="text-gray-500">No Posts Available</li>
@@ -9,7 +8,7 @@
           <h4 class="font-medium text-[#26303E]">{{ post.title }}</h4>
           <p class="mt-3 text-slate-500">{{ post.body }}</p>
         </div>
-        <div @click="openModal(post)" class="see-more-btn absolute right-3 bottom-2 flex gap-3">
+        <div @click="openModal(post)" class="see-more-btn absolute right-3 bottom-1 flex gap-3">
           <button class="font-semibold">See More</button>
           <svg
             width="32"
@@ -39,7 +38,7 @@
           </svg>
         </div>
 
-        <div class="line w-full absolute mt-3 h-[0.5px] bg-[#D8D9DD]"></div>
+        <div class="line w-full absolute mt-8 h-[0.5px] bg-[#D8D9DD]"></div>
       </li>
     </ul>
 

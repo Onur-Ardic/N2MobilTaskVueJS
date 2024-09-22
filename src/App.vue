@@ -7,12 +7,12 @@ const activeSection = ref('todos')
 </script>
 
 <template>
-  <div class="flex h-screen w-screen">
+  <main class="flex h-screen w-screen">
     <Sidebar :activeSection="activeSection" />
-    <div class="flex-grow p-5 overflow-y-auto">
+    <section class="flex-grow p-5 overflow-y-auto ms-5">
       <RouterView @update:section="activeSection = $event" />
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped></style>

@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h3 class="text-xl font-bold">Albums</h3>
     <ul class="flex flex-wrap gap-10">
       <li v-if="localAlbums && localAlbums.length === 0" class="text-gray-500">
         No Albums Available
       </li>
       <li v-else v-for="album in localAlbums" :key="album.id" class="mt-4">
         <div
-          class="album-container border border-gray-300 rounded-lg p-4 mx-auto w-[250px] h-[300px]"
+          class="album-container border border-gray-300 rounded-lg p-4 mx-auto w-[350px] h-[380px]"
         >
           <div class="grid grid-cols-2 gap-2 mb-2 mx-auto">
             <img

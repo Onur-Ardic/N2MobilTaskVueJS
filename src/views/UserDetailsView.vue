@@ -26,7 +26,7 @@
 
       <router-link to="/">Go Home</router-link>
     </div>
-    <div class="content mt-3">
+    <div class="content mt-24">
       <Todos v-if="activeSection === 'todos'" :userId="userId" />
       <Posts v-if="activeSection === 'posts'" :userId="userId" />
       <Albums v-if="activeSection === 'albums'" :userId="userId" />

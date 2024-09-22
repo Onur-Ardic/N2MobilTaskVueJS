@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3 class="text-xl font-bold">Todos</h3>
     <ul>
       <li v-if="localTodos.length === 0" class="text-gray-500">No Todos Available</li>
       <li v-else v-for="todo in localTodos" :key="todo.id" class="flex gap-3 mt-4 items-center">
@@ -10,7 +9,7 @@
           @change="toggleTodo(todo.id)"
           class="form-checkbox h-5 w-5 text-purple-600 border-purple-600 bg-pur focus:ring-purple-500"
         />
-        <p :class="{ 'line-through': todo.completed }">{{ todo.title }}</p>
+        <p class="text-lg font-normal text-[#485B69]">{{ todo.title }}</p>
       </li>
     </ul>
   </div>

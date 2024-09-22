@@ -59,10 +59,10 @@ const props = defineProps(['users'])
                 />
               </svg>
 
-              <h5 class="font-bold">Location</h5>
+              <h5>Location</h5>
             </div>
-            <p class="text-gray-600">
-              <span
+            <p class="text-gray-600 font-extralight">
+              <span class="font-extralight"
                 >Timko sokak no:2
                 <br />
               </span>
@@ -70,7 +70,7 @@ const props = defineProps(['users'])
             </p>
           </div>
 
-          <div class="company flex flex-col">
+          <div class="company flex flex-col mt-3">
             <div class="title flex gap-1">
               <svg
                 width="24"
@@ -88,10 +88,10 @@ const props = defineProps(['users'])
                 />
               </svg>
 
-              <h5 class="font-bold">Company</h5>
+              <h5>Company</h5>
             </div>
-            <p class="text-gray-600 text-md">
-              <span
+            <p class="text-gray-600 text-md font-extralight">
+              <span class="font-extralight"
                 >Timko sokak no:2
                 <br />
               </span>
@@ -99,7 +99,7 @@ const props = defineProps(['users'])
             </p>
           </div>
 
-          <div class="website flex flex-col">
+          <div class="website flex flex-col mt-3">
             <div class="title flex gap-1">
               <svg
                 width="24"
@@ -124,10 +124,10 @@ const props = defineProps(['users'])
                 />
               </svg>
 
-              <h5 class="font-bold">Website</h5>
+              <h5>Website</h5>
             </div>
 
-            <p class="text-gray-600">{{ user.website }}</p>
+            <p class="text-gray-600 font-extralight">{{ user.website }}</p>
           </div>
         </div>
       </div>
