@@ -19,11 +19,7 @@ export const getUserStore = defineStore('users', {
       }
     },
   },
-  mutations: {
-    setUsers(state, users) {
-      state.users = users
-    },
-  },
+
   getters: {
     userById: (state) => (id) => {
       return state.users.find((user) => user.id === id)
