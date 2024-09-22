@@ -8,7 +8,7 @@
           type="checkbox"
           :checked="todo.completed"
           @change="toggleTodo(todo.id)"
-          class="form-checkbox h-5 w-5 text-purple-600 border-purple-600 focus:ring-purple-500"
+          class="form-checkbox h-5 w-5 text-purple-600 border-purple-600 bg-pur focus:ring-purple-500"
         />
         <p :class="{ 'line-through': todo.completed }">{{ todo.title }}</p>
       </li>

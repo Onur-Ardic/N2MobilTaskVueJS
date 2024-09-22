@@ -32,7 +32,7 @@ Bu proje, kullanıcı detay izleme platformu olarak tasarlanmıştır. Kullanıc
 
 4. Geliştirme sunucusunu başlatın:
    ```bash
-   npm run serve
+   npm run dev
    ```
 
 ## Kullanım
@@ -40,6 +40,7 @@ Bu proje, kullanıcı detay izleme platformu olarak tasarlanmıştır. Kullanıc
 - Ana sayfada kullanıcıların listesi görüntülenir.
 - Her bir kullanıcı kartına tıklayarak detay sayfasına geçiş yapılır.
 - Detay sayfasında kullanıcının paylaşımları, albümleri ve görevleri görüntülenir.
+- User'a ait todolar localstorage'de tutulur.
 
 ## Tasarım Linki
 
